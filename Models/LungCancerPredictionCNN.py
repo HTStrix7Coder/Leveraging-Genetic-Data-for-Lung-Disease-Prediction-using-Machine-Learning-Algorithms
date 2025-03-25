@@ -10,7 +10,7 @@ import os
 import random
 
 root_directory = r"C:\Users\harin\Downloads\AICode\BioProject\Datasets\The IQ-OTHNCCD lung cancer dataset"
-
+# Data Augmentation
 datagen = ImageDataGenerator(
     rescale=1.0 / 255,
     rotation_range=30,
