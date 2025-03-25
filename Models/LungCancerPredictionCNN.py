@@ -95,21 +95,6 @@ plt.title("Training and Validation Loss")
 plt.legend(loc="upper right")
 plt.show()
 
-predictions = model.predict(validation_generator)
-predicted_classes = np.argmax(predictions, axis=1)
-true_classes = validation_generator.classes
-class_labels = list(validation_generator.class_indices.keys())
-
-confusion_mtx = tf.math.confusion_matrix(true_classes, predicted_classes)
-confusion_mtx = confusion_mtx / confusion_mtx.numpy().sum(axis=1)[:, np.newaxis]  # Normalize
-plt.figure(figsize=(10, 8))
-sns.heatmap(confusion_mtx, xticklabels=class_labels, yticklabels=class_labels, 
-            annot=True, fmt='0.2f', cmap='Blues')  # Changed format to '0.2f' for floating-point values
-plt.xlabel('Predicted')
-plt.ylabel('True')
-plt.title('Confusion Matrix')
-plt.show()
-
 def visualize_images_from_directory(directory, num_images=10):
     class_names = [d for d in os.listdir(directory) if os.path.isdir(os.path.join(directory, d))]
     for class_name in class_names:
